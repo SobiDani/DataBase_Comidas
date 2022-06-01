@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
           username: userInfo.username,
         },
         req.app.get("secretKey"),
-        { expiresIn: "5h" }
+        { expiresIn: "320h" }
       );
       return res.json({
         status: 200,

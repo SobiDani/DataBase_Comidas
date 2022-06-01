@@ -8,7 +8,7 @@ const ComidaSchema = new Schema(
     pais: {type: String, required: true},
     plato: {type: String, required: true},
     imagen: {type: String, required: true },
-    descripción: {type: String, required: false},
+    descripcion: {type: String, required: false},
     ingredientes: { type: String, required: false}
   },
   { timestamps: true }
