@@ -34,12 +34,15 @@ const getComidaByID = async (req, res, next) => {
 const createComida = async (req, res, next) => {
   try {
     const newComida = new Comida(req.body);
-    const createdComida = await newComida.save();
-    return res.json({
-      status: 201,
-      message: HTTPSTATUSCODE[201],
-      comida: createdComida,
-    });
+    if (req.file) {
+        newComida.imagen = req.file.path;
+      }
+      const createdComidas = await newComida.save();
+      return res.json({
+        status: 201,
+        message: HTTPSTATUSCODE[201],
+        comida: createdComidas,
+      });
   } catch (error) {
     return next(error);
   }

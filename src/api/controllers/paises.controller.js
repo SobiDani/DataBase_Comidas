@@ -33,7 +33,7 @@ const createPais = async (req, res, next) => {
   try {
     const newPais = new Pais(req.body);
     if (req.file) {
-      newPais.image = req.file.path;
+      newPais.imagen = req.file.path;
     }
     const createdPaises = await newPais.save();
     return res.json({
@@ -66,12 +66,12 @@ const patchPais = async (req, res, next) => {
     const paisData = await Pais.findById(id);
 
     patchPais.comidas = [...paisData.comidas, ...patchPais.comidas];
-    if (paisData.image) {
+    if (paisData.imagen) {
       deleteFile(paisData.image);
     }
 
     if (req.file) {
-      patchPais.image = req.file.path;
+      patchPais.imagen = req.file.path;
     }
     const PaisDB = await Pais.findByIdAndUpdate(id, patchPais);
     return res.status(200).json({ nuevo: patchPais, vieja: PaisDB });
